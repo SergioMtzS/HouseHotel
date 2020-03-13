@@ -1,0 +1,7 @@
+{
+  "name": "Dulcemania",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

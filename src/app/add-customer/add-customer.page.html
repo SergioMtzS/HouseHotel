@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar class="ios hydrated">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ios title-ios hydrated">Add Song</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding ios list-ios list-lines-full list-ios-lines-full hydrated">
+    <form [formGroup]="CustomerForm" (ngSubmit)="onFormSubmit()">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="FirstName" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input formControlName="LastName" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Calle</ion-label>
+        <ion-input formControlName="Address" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Distrito</ion-label>
+        <ion-input formControlName="District" type="text" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ciudad</ion-label>
+        <ion-input formControlName="City" type="text" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Pais</ion-label>
+        <ion-input formControlName="Country" type="text" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">Add Song</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>
