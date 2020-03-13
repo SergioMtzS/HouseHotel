@@ -9,7 +9,7 @@
 <ion-content>
   <ion-list class="ios list-ios hydrated">
     <ion-list-header class="ios hydrated">
-      Mis clientes
+      Mis personaas
     </ion-list-header>
 
     <ion-item *ngFor="let customer of Customers" class="item-label item ios in-list ion-focusable hydrated">
@@ -22,6 +22,7 @@
         <button ion-button clear [routerLink]="['/edit-customer/', customer._id]">
           <ion-icon name="create" style="zoom:2.0"></ion-icon>
         </button>
+        
         <button ion-button clear (click)="deleteCustomer(customer, i)">
           <ion-icon name="trash" style="zoom:2.0"></ion-icon>
         </button>
