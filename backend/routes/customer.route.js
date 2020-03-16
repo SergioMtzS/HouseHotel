@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const songRoute = express.Router();
+const customerRoute = express.Router();
 
-let SongModel = require('../model/Customer');
+let CustomerModel = require('../model/Customer');
 
-// Add Song
-songRoute.route('/create-customer').post((req, res, next) => {
-  SongModel.create(req.body, (error, data) => {
+
+customerRoute.route('/create-customer').post((req, res, next) => {
+  CustomerModel.create(req.body, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -15,20 +15,9 @@ songRoute.route('/create-customer').post((req, res, next) => {
   })
 });
 
-// Get all songs
-songRoute.route('/').get((req, res) => {
-  SongModel.find((error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
-})
 
-// Get single song
-songRoute.route('/get-song/:id').get((req, res) => {
-  SongModel.findById(req.params.id, (error, data) => {
+customerRoute.route('/').get((req, res) => {
+  CustomerModel.find((error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -38,9 +27,44 @@ songRoute.route('/get-song/:id').get((req, res) => {
 })
 
 
-// Update song
-songRoute.route('/update-song/:id').put((req, res, next) => {
-  SongModel.findByIdAndUpdate(req.params.id, {
+customerRoute.route('/findOne').get((req, res) => {
+ 
+  CustomerModel.findOne(function (error, data) {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  }).sort({_id:-1})
+})
+
+customerRoute.route('/find/:search').get((req, res) => {
+  CustomerModel.find({$or :[{FirstName: req.params.search},{City:req.params.search}]},(error, data) => {
+    if (error) {
+      return next(error);
+      console.log("error")
+    } else {
+      res.json(data)
+      console.log(res)
+    }
+  })
+})
+
+
+customerRoute.route('/get-customer/:id').get((req, res) => {
+  CustomerModel.findById(req.params.id, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+})
+
+
+
+customerRoute.route('/update-customer/:id').put((req, res, next) => {
+  CustomerModel.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {
     if (error) {
@@ -53,9 +77,10 @@ songRoute.route('/update-song/:id').put((req, res, next) => {
   })
 })
 
-// Delete song
-songRoute.route('/delete-song/:id').delete((req, res, next) => {
-  SongModel.findByIdAndRemove(req.params.id, (error, data) => {
+
+
+customerRoute.route('/delete-customer/:id').delete((req, res, next) => {
+  CustomerModel.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -66,4 +91,4 @@ songRoute.route('/delete-song/:id').delete((req, res, next) => {
   })
 })
 
-module.exports = songRoute;
+module.exports = customerRoute;

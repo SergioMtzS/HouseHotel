@@ -1,34 +1,88 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Music App
-    </ion-title>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="4"><ion-title>
+          Customer --MongoDB {{search}} 
+        </ion-title></ion-col>
+        <ion-col size="5"></ion-col>
+        <ion-col size="3">
+            <ion-grid>
+                <ion-row>
+                          <ion-input  [(ngModel)]="search" style="background-color: #ffffff; color: black !important" (keypress)="find()"></ion-input>
+                   
+                          <ion-button (click)="find()"><ion-icon name="search"></ion-icon></ion-button>
+  
+                </ion-row>
+
+            </ion-grid>
+          
+        
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list class="ios list-ios hydrated">
-    <ion-list-header class="ios hydrated">
-      Mis personaas
-    </ion-list-header>
 
-    <ion-item *ngFor="let customer of Customers" class="item-label item ios in-list ion-focusable hydrated">
-      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
-        <h2>{{customer.Address}}</h2>
-        <h3>{{customer.FirstName}} {{customer._id}} </h3>
-      </ion-label>
+  <div  style="background-color: aqua !important;" *ngIf="search"  >    
+    <ion-list class="ios list-ios hydrated">
+      <ion-list-header class="ios hydrated">
+        Mis clientes
+      </ion-list-header>
 
-      <div class="item-note" item-end>
-        <button ion-button clear [routerLink]="['/edit-customer/', customer._id]">
-          <ion-icon name="create" style="zoom:2.0"></ion-icon>
-        </button>
+      <ion-item *ngFor="let customer2 of Customers2" class="item-label item ios in-list ion-focusable hydrated"  >
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" [ngStyle]="{'background-color':customer2.Status === true ? 'blue' : 'red' }">
+          <h2>{{customer2.Address}}</h2>
+          <h3>{{customer2.FirstName}} {{customer2._id}} </h3>
+        </ion-label>
+
+        <div class="item-note" item-end>
+          <button ion-button clear [routerLink]="['/edit-customer/', customer2._id]">
+            <ion-icon name="create" style="zoom:2.0"></ion-icon>
+          </button>
+          <button ion-button clear (click)="deleteCustomer(customer2, i)">
+            <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+          </button>
+          <button ion-button clear (click)="logicCostumer(customer2, i)">
+            <ion-icon name="close-circle-outline" style="zoom:2.0"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
         
-        <button ion-button clear (click)="deleteCustomer(customer, i)">
-          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
-        </button>
+    <div *ngIf="!search" >    
+        <ion-list class="ios list-ios hydrated">
+          <ion-list-header class="ios hydrated">
+            Mis clientes
+          </ion-list-header>
+
+          <ion-item *ngFor="let customer of Customers" class="item-label item ios in-list ion-focusable hydrated"  >
+            <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" [ngStyle]="{'background-color':customer.Status === true ? 'green' : 'red' }">
+              <h2>{{customer.Address}}</h2>
+              <h3>{{customer.FirstName}} {{customer._id}} </h3>
+            </ion-label>
+
+            <div class="item-note" item-end>
+              <button ion-button clear [routerLink]="['/edit-customer/', customer._id]">
+                <ion-icon name="create" style="zoom:2.0"></ion-icon>
+              </button>
+              <button ion-button clear (click)="deleteCustomer(customer, i)">
+                <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+              </button>
+              <button ion-button clear (click)="logicCostumer(customer, i)">
+                <ion-icon name="close-circle-outline" style="zoom:2.0"></ion-icon>
+              </button>
+            </div>
+          </ion-item>
+        </ion-list>
       </div>
-    </ion-item>
-  </ion-list>
+
 
 
   <!-- fab placed to the bottom start -->
@@ -38,4 +92,3 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
-

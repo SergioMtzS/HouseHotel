@@ -23,18 +23,29 @@ export class EditCustomerPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getCustomerData(this.id);
+   this.getCustomerData(this.id);
     this.updateCustomerForm = this.fb.group({
       Address: [''],
-      FirstName: ['']
+      FirstName: [''],
+      LastName: [''],
+        City: [''],
+        Country: [''],
+        District: ['']
     })
   }
 
   getCustomerData(id) {
     this.customerAPI.getCustomer(id).subscribe(res => {
+
+        console.log(res['Status'])
       this.updateCustomerForm.setValue({
-        Address: res[''],
-        FirstName: res['artist']
+        Address: res['Address'],
+        FirstName: res['FirstName'],
+        LastName: res['LastName'],
+        City: res['City'],
+        Country: res['Country'],
+        District: res['District']
+
       });
     });
   }
@@ -43,9 +54,10 @@ export class EditCustomerPage implements OnInit {
     if (!this.updateCustomerForm.valid) {
       return false;
     } else {
+      console.log(this.updateCustomerForm.value)
       this.customerAPI.updateCustomer(this.id, this.updateCustomerForm.value)
         .subscribe((res) => {
-          console.log(res)
+          //console.log(res)
           this.updateCustomerForm.reset();
           this.router.navigate(['/home']);
         })

@@ -31,6 +31,22 @@ export class CustomerService {
       );
   }
 
+  getCustomerFind(param): Observable<Customer[]> {
+    return this.http.get<Customer[]>('http://localhost:3000/api/find/' + param)
+      .pipe(
+        tap(_ => console.log(`Customer fetched: ${param}`)),
+        catchError(this.handleError<Customer[]>(`Get Customer id=${param}`))
+      );
+  }
+
+  getCustomerFindOne(): Observable<Customer[]> {
+    return this.http.get<Customer[]>('http://localhost:3000/api/findOne/')
+      .pipe(
+        tap(_ => console.log(`_idMAxGET`)),
+        catchError(this.handleError<Customer[]>(`Get`))
+      );
+  }
+
   getCustomerList(): Observable<Customer[]> {
     return this.http.get<Customer[]>('http://localhost:3000/api')
       .pipe(
@@ -39,7 +55,10 @@ export class CustomerService {
       );
   }
 
+  
+
   updateCustomer(id, customer: Customer): Observable<any> {
+    console.log(customer)
     return this.http.put('http://localhost:3000/api/update-customer/' + id, customer, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Customer updated: ${id}`)),
@@ -62,5 +81,13 @@ export class CustomerService {
       console.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
+  }
+
+  logicCustomer(id, customer: Customer): Observable<any> {
+    return this.http.put('http://localhost:3000/api/update-logiccustomer/' + id, customer, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`Customer updated: ${id}`)),
+        catchError(this.handleError<Customer[]>('Update Customer'))
+      );
   }
 }

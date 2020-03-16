@@ -12,13 +12,38 @@
   <ion-list lines="full" class="ion-no-margin ion-no-padding ios list-ios list-lines-full list-ios-lines-full hydrated">
     <form [formGroup]="updateCustomerForm" (ngSubmit)="updateForm()">
       <ion-item>
-        <ion-label position="floating">Song name</ion-label>
-        <ion-input formControlName="song_name" type="text" required></ion-input>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input formControlName="FirstName" type="text" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Artist</ion-label>
-        <ion-input formControlName="artist" type="text" required>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input formControlName="LastName" type="text" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input formControlName="City" type="text" required>
+        </ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating">Country</ion-label>
+        <ion-input formControlName="Country" type="text" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">District</ion-label>
+        <ion-input formControlName="District" type="text" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input formControlName="Address" type="text" required>
         </ion-input>
       </ion-item>
 
