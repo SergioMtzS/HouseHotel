@@ -13,30 +13,42 @@
     <form [formGroup]="CustomerForm" (ngSubmit)="onFormSubmit()">
       <ion-item>
         <ion-label position="floating">Name</ion-label>
-        <ion-input formControlName="FirstName" type="text" required></ion-input>
+        <ion-input formControlName="FirstName" type="text" required [(ngModel)="FirstName"]></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Apellido</ion-label>
-        <ion-input formControlName="LastName" type="text" required></ion-input>
+        <ion-input formControlName="LastName" type="text" required [(ngModel)="LastName"]></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Calle</ion-label>
-        <ion-input formControlName="Address" type="text" required></ion-input>
+        <ion-input formControlName="Address" type="text" required [(ngModel)="Address"]></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Distrito</ion-label>
+<<<<<<< HEAD
         <ion-input formControlName="District" type="text">
+=======
+        <ion-input formControlName="District" type="text" required [(ngModel)="District"]>
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Ciudad</ion-label>
+<<<<<<< HEAD
         <ion-input formControlName="City" type="text">
+=======
+        <ion-input formControlName="City" type="text" required [(ngModel)="City"]>
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Pais</ion-label>
+<<<<<<< HEAD
         <ion-input formControlName="Country" type="text" required >
+=======
+        <ion-input formControlName="Country" type="text" required [(ngModel)="Country"]>
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
         </ion-input>
       </ion-item>
 

@@ -14,7 +14,11 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class HomePage implements OnInit {
   Customers: any = [];
   Customers2: any = [];
+<<<<<<< HEAD
   id: number;
+=======
+  id: any;
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
   search: String;
 
   updateCustomerForm: FormGroup;
@@ -34,7 +38,10 @@ export class HomePage implements OnInit {
     this.updateCustomerForm = this.fb.group({
       Status: [false]
     })
+<<<<<<< HEAD
     this.findOne();
+=======
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
 
     this.search="";
    }
@@ -46,17 +53,24 @@ export class HomePage implements OnInit {
   }
 
   find(){
+<<<<<<< HEAD
 
     if(this.search==""){
         console.log("empty")
     }else{
       this.CustomerService.getCustomerFind(this.search).subscribe((res)=>{
+=======
+    this.CustomerService.getCustomerFind(this.search).subscribe((res)=>{
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
        
         this.Customers2=res;
         console.log(this.Customers2)
     })
+<<<<<<< HEAD
     }
   
+=======
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
   }
 
   ionViewDidEnter() {
@@ -72,8 +86,12 @@ export class HomePage implements OnInit {
         .subscribe(() => {
           this.Customers.splice(i, 1);
           console.log('Customer deleted!')
+<<<<<<< HEAD
           this.router.navigateByUrl('/home');
           
+=======
+          location.reload();  
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
         }
         )
     }
@@ -107,6 +125,7 @@ export class HomePage implements OnInit {
     });
   }*/
 
+<<<<<<< HEAD
   findOne(){
     this.customerAPI.getCustomerFindOne().subscribe((res)=>{
         
@@ -129,6 +148,8 @@ export class HomePage implements OnInit {
      
    }
 
+=======
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
  updateForm() {
     if (!this.updateCustomerForm.valid) {
       return false;

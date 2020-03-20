@@ -37,10 +37,15 @@
 
       <ion-item *ngFor="let customer2 of Customers2" class="item-label item ios in-list ion-focusable hydrated"  >
         <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" [ngStyle]="{'background-color':customer2.Status === true ? 'blue' : 'red' }">
+<<<<<<< HEAD
           <h1> {{customer2.FirstName}}</h1>
           <h2>{{customer2.Address}}</h2>
           <h3> {{customer2._id}} </h3>
 
+=======
+          <h2>{{customer2.Address}}</h2>
+          <h3>{{customer2.FirstName}} {{customer2._id}} </h3>
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
         </ion-label>
 
         <div class="item-note" item-end>
@@ -65,10 +70,16 @@
           </ion-list-header>
 
           <ion-item *ngFor="let customer of Customers" class="item-label item ios in-list ion-focusable hydrated"  >
+<<<<<<< HEAD
             <ion-label id="lab" class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" [ngStyle]="{'background-color':customer.Status === true ? 'green' : 'red' }" (click)="conso(customer,i)" routerLink="/perfil">
               <h1> {{customer.FirstName}}</h1>
              <h2>{{customer.Address}}</h2>
              <h3> {{customer._id}} </h3>
+=======
+            <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" [ngStyle]="{'background-color':customer.Status === true ? 'green' : 'red' }">
+              <h2>{{customer.Address}}</h2>
+              <h3>{{customer.FirstName}} {{customer._id}} </h3>
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
             </ion-label>
 
             <div class="item-note" item-end>

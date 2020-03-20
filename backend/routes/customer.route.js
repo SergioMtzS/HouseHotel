@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 const customerRoute = express.Router();
+<<<<<<< HEAD
 //const AuditTask = require('./AuditTask')
 
 let CustomerModel = require('../model/Customer');
 let HabModel = require('../model/habitacion');
+=======
+
+let CustomerModel = require('../model/Customer');
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
 
 
 customerRoute.route('/create-customer').post((req, res, next) => {
@@ -28,6 +33,7 @@ customerRoute.route('/').get((req, res) => {
   })
 })
 
+<<<<<<< HEAD
 customerRoute.route('/aggregate/:id').get((req, res) => {
   console.log(req.params.id)
 
@@ -43,15 +49,34 @@ customerRoute.route('/aggregate/:id').get((req, res) => {
 
 customerRoute.route('/perfil').get((req, res) => {
   HabModel.find((error, data) => {
+=======
+
+customerRoute.route('/findOne').get((req, res) => {
+ 
+  CustomerModel.findOne(function (error, data) {
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
     if (error) {
       return next(error)
     } else {
       res.json(data)
     }
+  }).sort({_id:-1})
+})
+
+customerRoute.route('/find/:search').get((req, res) => {
+  CustomerModel.find({$or :[{FirstName: req.params.search},{City:req.params.search}]},(error, data) => {
+    if (error) {
+      return next(error);
+      console.log("error")
+    } else {
+      res.json(data)
+      console.log(res)
+    }
   })
 })
 
 
+<<<<<<< HEAD
 customerRoute.route('/findOne').get((req, res) => {
  
   CustomerModel.findOne(function (error, data) {
@@ -100,6 +125,8 @@ customerRoute.route('/Habfind/:search').get((req, res) => {
 })
 
 
+=======
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
 customerRoute.route('/get-customer/:id').get((req, res) => {
   CustomerModel.findById(req.params.id, (error, data) => {
     if (error) {
@@ -113,7 +140,10 @@ customerRoute.route('/get-customer/:id').get((req, res) => {
 
 
 customerRoute.route('/update-customer/:id').put((req, res, next) => {
+<<<<<<< HEAD
   console.log(req.body)
+=======
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
   CustomerModel.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {
@@ -127,6 +157,7 @@ customerRoute.route('/update-customer/:id').put((req, res, next) => {
   })
 })
 
+<<<<<<< HEAD
 customerRoute.route('/update-customer-push/:id/:idH').put((req, res, next) => {
   console.log(req.params.id)
   CustomerModel.findByIdAndUpdate(req.params.id, {
@@ -145,6 +176,8 @@ customerRoute.route('/update-customer-push/:id/:idH').put((req, res, next) => {
 
 
 
+=======
+>>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
 
 
 customerRoute.route('/delete-customer/:id').delete((req, res, next) => {
