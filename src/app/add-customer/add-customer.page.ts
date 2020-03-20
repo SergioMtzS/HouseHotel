@@ -15,6 +15,9 @@ import { onErrorResumeNext } from 'rxjs';
 export class AddCustomerPage implements OnInit {
 
   CustomerForm: FormGroup;
+  id: number;
+  
+  
 
   constructor(
     private customerAPI: CustomerService,
@@ -23,6 +26,7 @@ export class AddCustomerPage implements OnInit {
     private zone: NgZone
   ) {
     this.CustomerForm = this.fb.group({
+      _id:[this.customerAPI.id],
       Address: [''],
       City:[''],
       Country: [''],
@@ -31,23 +35,41 @@ export class AddCustomerPage implements OnInit {
       LastName: [''],
       Status: [true]
     })
+    
+ 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   console.log(this.customerAPI.id)
+    
+   }
+
+   
 
   onFormSubmit() {
+    
     if (!this.CustomerForm.valid) {
       return false;
     } else {
+ 
       this.customerAPI.addCustomer(this.CustomerForm.value)
         .subscribe((res) => {
           this.zone.run(() => {
             console.log(res)
             this.CustomerForm.reset();
+            this.findOne();
             this.router.navigate(['/home']);
           })
         });
     }
   }
+
+  findOne(){
+    this.customerAPI.getCustomerFindOne().subscribe((res)=>{
+        this.id=res['_id'];
+        this.customerAPI.id=Number(this.id+1);
+
+          })
+   }
 
 }

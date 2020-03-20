@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row>
+            <ion-col><ion-title>perfil</ion-title></ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Property_type</ion-label>
+                <ion-select placeholder="Select One" [(ngModel)]="search" (ionChange)="cons()">
+                  <ion-select-option value="Aparthotel">ApartHotel</ion-select-option>
+                  <ion-select-option value="Apartment">Apartment</ion-select-option>
+                  <ion-select-option value="Bed and breakfast">Bed and breakfast</ion-select-option>
+                  <ion-select-option value="Bungalow">Bungalow</ion-select-option>
+                  <ion-select-option value="Condominium">Condominium</ion-select-option>
+                  <ion-select-option value="Hotel">Hotel</ion-select-option>
+
+                </ion-select>
+              </ion-item>
+
+            </ion-col>
+            <ion-col>
+              <div class="item-note" item-end>
+                <ion-button routerLink="/user-hab"> Mis Habitaciones</ion-button>
+              </div></ion-col>
+          </ion-row>
+
+
+      </ion-grid>
+
+
+  </ion-toolbar>
+  <ion-toolbar>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+          </ion-col>
+          <ion-col>
+            <ion-grid>
+              <ion-row>
+                <ion-col><ion-input placeholder="Minimo" [(ngModel)]="A" style="background-color: blanchedalmond !important; color: black !important"></ion-input></ion-col>
+                <ion-col></ion-col>
+                <ion-col><ion-input placeholder="Maximo" [(ngModel)]="B" style="background-color: blanchedalmond !important; color: black !important"></ion-input></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+          <ion-col>
+              <ion-button (click)="findPrice()"><ion-icon name="search-outline"></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>
+        Nombre: {{nombre}}
+    </ion-label>
+    <ion-label>
+      Apellido: {{apellido}}
+  </ion-label>
+  <ion-label>
+    Calle: {{calle}}
+</ion-label>
+  </ion-item>
+
+  <div *ngIf="search"  [ngStyle]="{'display': cont === 1 ? 'none' : 'block' }">    
+    <ion-list class="ios list-ios hydrated">
+      <ion-list-header class="ios hydrated">
+        Habitaciones
+      </ion-list-header>
+
+      <ion-item *ngFor="let habitacion2 of Habitaciones2" class="item-label item ios in-list ion-focusable hydrated">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+          <h2>{{habitacion2.name}}</h2>
+          <h3><ion-label>Dormitorios: {{habitacion2.bedrooms}} </ion-label>{{habitacion2._id}}
+          <ion-label>price: {{habitacion2.price}} </ion-label>
+          <ion-label>Property_type: {{habitacion2.property_type}} </ion-label>
+          </h3>
+        </ion-label>
+
+        <div class="item-note" item-end>
+          <img src='{{habitacion2.images.picture_url}}' width="100" heigth="100">
+          <button ion-button clear (click)="pushHab(habitacion2, i)">
+            <ion-icon name="add-outline" style="zoom:2.0"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="!search" [ngStyle]="{'display': cont === 1 ? 'none' : 'block' }">    
+    <ion-list class="ios list-ios hydrated">
+      <ion-list-header class="ios hydrated">
+        Habitaciones
+      </ion-list-header>
+
+      <ion-item *ngFor="let habitacion of Habitaciones" class="item-label item ios in-list ion-focusable hydrated">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+          <h2>{{habitacion.name}}</h2>
+          <h3><ion-label>Dormitorios: {{habitacion.bedrooms}} </ion-label>{{habitacion._id}}
+          <ion-label>price: {{habitacion.price}} </ion-label>
+          <ion-label>Property_type: {{habitacion.property_type}} </ion-label>
+          </h3>
+        </ion-label>
+
+        <div class="item-note" item-end>
+          <img src='{{habitacion.images.picture_url}}' width="100" heigth="100">
+          <button ion-button clear (click)="pushHab(habitacion, i)">
+            <ion-icon name="add-outline" style="zoom:2.0"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="A"  >    
+    <ion-list class="ios list-ios hydrated">
+      <ion-list-header class="ios hydrated">
+        Habitaciones Price
+      </ion-list-header>
+
+      <ion-item *ngFor="let habitacion3 of Habitaciones3" class="item-label item ios in-list ion-focusable hydrated">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+          <h2>{{habitacion3.name}}</h2>
+          <h3><ion-label>Dormitorios: {{habitacion3.bedrooms}} </ion-label>{{habitacion3._id}}
+          <ion-label>price: {{habitacion3.price}} </ion-label>
+          <ion-label>Property_type: {{habitacion3.property_type}} </ion-label>
+          </h3>
+        </ion-label>
+
+        <div class="item-note" item-end>
+          <img src='{{habitacion3.images.picture_url}}' width="100" heigth="100">
+          <button ion-button clear (click)="pushHab(habitacion3, i)">
+            <ion-icon name="add-outline" style="zoom:2.0"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

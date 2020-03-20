@@ -19,7 +19,7 @@ mongoose.connect(dataBaseConfig.db, {
   }
 )
 
-const songRoute = require('./routes/customer.route')
+const customerRoute = require('./routes/customer.route')
 
 const app = express();
 app.use(bodyParser.json());
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 // RESTful API root
-app.use('/api', songRoute)
+app.use('/api', customerRoute)
 
 // PORT
 const port = process.env.PORT || 3000;
@@ -54,3 +54,7 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });
+
+
+
+

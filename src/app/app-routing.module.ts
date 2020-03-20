@@ -41,6 +41,14 @@ const routes: Routes = [
     path: 'edit-customer/:id',
     loadChildren: () => import('./edit-customer/edit-customer.module').then(m => m.EditCustomerPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'user-hab',
+    loadChildren: () => import('./user-hab/user-hab.module').then( m => m.UserHabPageModule)
+  },
 ];
 
 @NgModule({
