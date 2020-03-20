@@ -13,6 +13,8 @@ export class CustomerService {
   id: Number;
   obj: any;
   idHab: Number;
+  objH: any;
+  image: any;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -43,7 +45,6 @@ export class CustomerService {
       );
   }
 
-<<<<<<< HEAD
   getHabFind(param): Observable<Customer[]> {
     return this.http.get<Customer[]>('http://localhost:3000/api/Habfind/' + param)
       .pipe(
@@ -68,8 +69,6 @@ export class CustomerService {
       );
   }
 
-=======
->>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
   getCustomerFindOne(): Observable<Customer[]> {
     return this.http.get<Customer[]>('http://localhost:3000/api/findOne/')
       .pipe(
@@ -86,7 +85,6 @@ export class CustomerService {
       );
   }
 
-<<<<<<< HEAD
   getCustomerListHab(): Observable<Customer[]> {
     return this.http.get<Customer[]>('http://localhost:3000/api/perfil')
       .pipe(
@@ -96,8 +94,6 @@ export class CustomerService {
   }
 
 
-=======
->>>>>>> fbfb2abea78c61208e7983d3b301f64d6f802760
   
 
   updateCustomer(id, customer: Customer): Observable<any> {

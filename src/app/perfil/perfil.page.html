@@ -72,7 +72,7 @@
       </ion-list-header>
 
       <ion-item *ngFor="let habitacion2 of Habitaciones2" class="item-label item ios in-list ion-focusable hydrated">
-        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" (click)="conso(habitacion2,i)" routerLink="/info-hab">
           <h2>{{habitacion2.name}}</h2>
           <h3><ion-label>Dormitorios: {{habitacion2.bedrooms}} </ion-label>{{habitacion2._id}}
           <ion-label>price: {{habitacion2.price}} </ion-label>
@@ -97,7 +97,7 @@
       </ion-list-header>
 
       <ion-item *ngFor="let habitacion of Habitaciones" class="item-label item ios in-list ion-focusable hydrated">
-        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" (click)="conso(habitacion,i)" routerLink="/info-hab">
           <h2>{{habitacion.name}}</h2>
           <h3><ion-label>Dormitorios: {{habitacion.bedrooms}} </ion-label>{{habitacion._id}}
           <ion-label>price: {{habitacion.price}} </ion-label>

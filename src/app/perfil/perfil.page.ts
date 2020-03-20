@@ -40,6 +40,13 @@ export class PerfilPage implements OnInit {
     })
   }
 
+  conso(hab, i){
+
+    this.API.objH=hab;
+    this.API.image=hab.images.picture_url;
+     console.log(typeof(hab+i))
+     
+   }
 
   ngOnInit() {
     this.cont=0;

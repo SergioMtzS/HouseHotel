@@ -19,28 +19,26 @@
   <div [ngStyle]="{'display':Habitaciones === null ? 'none' : 'block' }">    
     <ion-list class="ios list-ios hydrated">
       <ion-list-header class="ios hydrated">
-        Habitaciones
+        Mis rentas
       </ion-list-header>
 
       <ion-item *ngFor="let habitacion of Habitaciones" class="item-label item ios in-list ion-focusable hydrated">
         <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
           <h2>{{habitacion.name}}</h2>
           <h3><ion-label>Dormitorios: {{habitacion.bedrooms}} </ion-label>{{habitacion._id}}
-          <ion-label>price: {{habitacion.price}} </ion-label>
+          <ion-label>price: {{habitacion.price.$numberDecimal}} </ion-label>
           <ion-label>Property_type: {{habitacion.property_type}} </ion-label>
           </h3>
         </ion-label>
 
         <div class="item-note" item-end>
           <img src='{{habitacion.images.picture_url}}' width="100" heigth="100">
-          <button ion-button clear>
-            <ion-icon name="add-outline" style="zoom:2.0"></ion-icon>
-          </button>
+          
         </div>
       </ion-item>
     </ion-list>
   </div>
-  <div [ngStyle]="{'display':Habitaciones ===  ? 'block' : 'none' }">
+  <div [ngStyle]="{'display':Habitaciones === null ? 'block' : 'none' }">
       Sin Habitaciones
   </div>
 </ion-content>

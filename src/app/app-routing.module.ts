@@ -49,6 +49,10 @@ const routes: Routes = [
     path: 'user-hab',
     loadChildren: () => import('./user-hab/user-hab.module').then( m => m.UserHabPageModule)
   },
+  {
+    path: 'info-hab',
+    loadChildren: () => import('./info-hab/info-hab.module').then( m => m.InfoHabPageModule)
+  },
 ];
 
 @NgModule({
